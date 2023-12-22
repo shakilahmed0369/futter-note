@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:note/note-view.dart';
+import 'package:note/note_create.dart';
 import 'package:note/note_data.dart';
 import 'package:note/services/noteCard.dart';
 
 void main() {
   runApp(MaterialApp(
     // home: Note(),
-    routes: {'/': (context) => Note(), '/view-note': (context) => ViewNote()},
+    routes: {
+      '/': (context) => Note(),
+      '/view-note': (context) => ViewNote(),
+      '/create-note': (context) => CreateNote()
+    },
   ));
 }
 
@@ -39,7 +43,9 @@ class _NoteState extends State<Note> {
         ),
       )),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/create-note');
+        },
         child: const Icon(Icons.add),
       ),
     );
