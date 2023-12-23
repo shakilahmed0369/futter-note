@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:note/services/NoteService.dart';
+import 'package:note/services/ThemeColorService.dart';
 
 class ViewNote extends StatefulWidget {
   const ViewNote({super.key});
@@ -10,16 +12,20 @@ class ViewNote extends StatefulWidget {
 class _ViewNoteState extends State<ViewNote> {
   @override
   Widget build(BuildContext context) {
-    final Map args = ModalRoute.of(context)!.settings.arguments as Map;
-    TextEditingController _NoteTitle =
-        TextEditingController(text: args['title']);
-    TextEditingController _NoteContent =
-        TextEditingController(text: args['content']);
+    final args = ModalRoute.of(context)!.settings.arguments as Map;
+    print(args);
+    TextEditingController _note =
+        TextEditingController(text: args['note'].toString());
 
     return Scaffold(
-      backgroundColor: args['color'],
+      backgroundColor: secondaryColor,
       appBar: AppBar(
-        title: Text("Note"),
+        title: const Text(
+          "Notes",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: primaryColor,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Container(
         child: Padding(
@@ -27,18 +33,30 @@ class _ViewNoteState extends State<ViewNote> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             TextField(
-              controller: _NoteTitle,
+              controller: _note,
+              style: const TextStyle(color: Colors.white, fontSize: 16.0),
               decoration: const InputDecoration(
-                  hintText: 'Note Title.', border: InputBorder.none),
-            ),
-            TextField(
-              controller: _NoteContent,
-              maxLines: null,
-              decoration: const InputDecoration(
-                  hintText: 'Note Title.', border: InputBorder.none),
+                  hintText: 'Note Contents.',
+                  border: InputBorder.none,
+                  hintStyle:
+                      TextStyle(color: Color.fromARGB(255, 130, 130, 130))),
             ),
           ]),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          setState(() {});
+          if (_note.text.isNotEmpty) {
+            await updateNotes(_note.text, args['index']);
+            if (context.mounted) {
+              Navigator.popUntil(context, (route) => route.isFirst);
+            }
+          }
+
+          print('save');
+        },
+        child: const Icon(Icons.save),
       ),
     );
   }
