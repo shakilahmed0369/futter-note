@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:note/main.dart';
 import 'package:note/services/NoteService.dart';
-import 'package:note/services/RawNote.dart';
 import 'package:note/services/ThemeColorService.dart';
 
 class CreateNote extends StatefulWidget {
-  const CreateNote({super.key});
+  final VoidCallback rebuildCallback;
+  const CreateNote({super.key, required this.rebuildCallback});
 
   @override
   State<CreateNote> createState() => _CreateNoteState();
@@ -54,6 +55,7 @@ class _CreateNoteState extends State<CreateNote> {
             await saveNotes(_noteContents.text);
 
             if (context.mounted) {
+              widget.rebuildCallback();
               Navigator.popUntil(context, (route) => route.isFirst);
             }
           }

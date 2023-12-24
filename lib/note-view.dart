@@ -3,7 +3,11 @@ import 'package:note/services/NoteService.dart';
 import 'package:note/services/ThemeColorService.dart';
 
 class ViewNote extends StatefulWidget {
-  const ViewNote({super.key});
+  final VoidCallback rebuildCallback;
+  final String note;
+  final int index;
+
+  const ViewNote({super.key,required this.note, required this.index, required this.rebuildCallback});
 
   @override
   State<ViewNote> createState() => _ViewNoteState();
@@ -12,10 +16,9 @@ class ViewNote extends StatefulWidget {
 class _ViewNoteState extends State<ViewNote> {
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as Map;
-    print(args);
+
     TextEditingController _note =
-        TextEditingController(text: args['note'].toString());
+        TextEditingController(text: widget.note);
 
     return Scaffold(
       backgroundColor: secondaryColor,
@@ -48,8 +51,9 @@ class _ViewNoteState extends State<ViewNote> {
         onPressed: () async {
           setState(() {});
           if (_note.text.isNotEmpty) {
-            await updateNotes(_note.text, args['index']);
+            await updateNotes(_note.text, widget.index);
             if (context.mounted) {
+              widget.rebuildCallback();
               Navigator.popUntil(context, (route) => route.isFirst);
             }
           }

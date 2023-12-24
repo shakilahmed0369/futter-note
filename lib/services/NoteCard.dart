@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note/note-view.dart';
 import 'package:note/services/NoteService.dart';
 import 'package:note/services/ThemeColorService.dart';
 
@@ -17,8 +18,7 @@ class NoteCard extends StatelessWidget {
       color: const Color(0xFF424243),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/view-note',
-              arguments: {'note': note, 'index': index});
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ViewNote(note: note, index: index, rebuildCallback: rebuildCallback)));
         },
         onLongPress: () {
           showModalBottomSheet(
