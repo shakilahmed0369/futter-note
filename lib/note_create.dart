@@ -59,8 +59,6 @@ class _CreateNoteState extends State<CreateNote> {
               Navigator.popUntil(context, (route) => route.isFirst);
             }
           }
-
-          print('save');
         },
         child: const Icon(Icons.save),
       ),

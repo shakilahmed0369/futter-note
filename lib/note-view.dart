@@ -57,8 +57,6 @@ class _ViewNoteState extends State<ViewNote> {
               Navigator.popUntil(context, (route) => route.isFirst);
             }
           }
-
-          print('save');
         },
         child: const Icon(Icons.save),
       ),

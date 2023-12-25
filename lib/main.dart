@@ -37,7 +37,6 @@ class _NoteState extends State<Note> {
       getNotes().then((result) {
         setState(() {
           notes = result;
-          print(notes);
         });
       });
     }
