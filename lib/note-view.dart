@@ -7,7 +7,11 @@ class ViewNote extends StatefulWidget {
   final String note;
   final int index;
 
-  const ViewNote({super.key,required this.note, required this.index, required this.rebuildCallback});
+  const ViewNote(
+      {super.key,
+      required this.note,
+      required this.index,
+      required this.rebuildCallback});
 
   @override
   State<ViewNote> createState() => _ViewNoteState();
@@ -16,12 +20,10 @@ class ViewNote extends StatefulWidget {
 class _ViewNoteState extends State<ViewNote> {
   @override
   Widget build(BuildContext context) {
-
-    TextEditingController _note =
-        TextEditingController(text: widget.note);
+    TextEditingController _note = TextEditingController(text: widget.note);
 
     return Scaffold(
-      backgroundColor: secondaryColor,
+      backgroundColor: primaryColor,
       appBar: AppBar(
         title: const Text(
           "Notes",
@@ -32,11 +34,12 @@ class _ViewNoteState extends State<ViewNote> {
       ),
       body: Container(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+          padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             TextField(
               controller: _note,
+              maxLines: null,
               style: const TextStyle(color: Colors.white, fontSize: 16.0),
               decoration: const InputDecoration(
                   hintText: 'Note Contents.',
