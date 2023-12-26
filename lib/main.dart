@@ -46,8 +46,11 @@ class _NoteState extends State<Note> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
-          "Notes",
-          style: TextStyle(color: Colors.white),
+          "NO NOTES",
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'BaronNeue',
+          ),
         ),
         backgroundColor: primaryColor,
       ),

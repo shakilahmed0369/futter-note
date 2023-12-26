@@ -26,16 +26,18 @@ class _ViewNoteState extends State<ViewNote> {
       backgroundColor: primaryColor,
       appBar: AppBar(
         title: const Text(
-          "Notes",
-          style: TextStyle(color: Colors.white),
+          "NO NOTES",
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'BaronNeue',
+          ),
         ),
         backgroundColor: primaryColor,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-        child:
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           TextField(
             controller: _note,
             maxLines: null,

@@ -18,17 +18,17 @@ class _CreateNoteState extends State<CreateNote> {
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
-        title: const Text(
-          "Notes",
-          style: TextStyle(color: Colors.white),
-        ),
+        title: const Text("NO NOTES",
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'BaronNeue',
+            )),
         backgroundColor: primaryColor,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-        child:
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           TextField(
             controller: _noteContents,
             maxLines: null,
