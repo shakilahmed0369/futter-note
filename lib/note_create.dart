@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:note/main.dart';
 import 'package:note/services/NoteService.dart';
 import 'package:note/services/ThemeColorService.dart';
 
@@ -13,7 +11,7 @@ class CreateNote extends StatefulWidget {
 }
 
 class _CreateNoteState extends State<CreateNote> {
-  TextEditingController _noteContents = TextEditingController(text: '');
+  final TextEditingController _noteContents = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -25,28 +23,26 @@ class _CreateNoteState extends State<CreateNote> {
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: primaryColor,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: Container(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            TextField(
-              controller: _noteContents,
-              maxLines: null,
-              style: const TextStyle(color: Colors.white, fontSize: 16.0),
-              decoration: const InputDecoration(
-                  hintText: 'Note Contents.',
-                  border: InputBorder.none,
-                  hintStyle:
-                      TextStyle(color: Color.fromARGB(255, 130, 130, 130))),
-              onChanged: (data) {
-                setState(() {});
-              },
-            ),
-          ]),
-        ),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+        child:
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          TextField(
+            controller: _noteContents,
+            maxLines: null,
+            style: const TextStyle(color: Colors.white, fontSize: 16.0),
+            decoration: const InputDecoration(
+                hintText: 'Note Contents.',
+                border: InputBorder.none,
+                hintStyle:
+                    TextStyle(color: Color.fromARGB(255, 130, 130, 130))),
+            onChanged: (data) {
+              setState(() {});
+            },
+          ),
+        ]),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {

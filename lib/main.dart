@@ -51,24 +51,22 @@ class _NoteState extends State<Note> {
         ),
         backgroundColor: primaryColor,
       ),
-      body: Container(
-        child: SafeArea(
-          child: Padding(
-              padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
-              child: GridView.count(
-                crossAxisCount: 2,
-                children: notes
-                    .asMap()
-                    .map((key, value) => MapEntry(
-                        key,
-                        NoteCard(
-                            note: value,
-                            index: key,
-                            rebuildCallback: rebuildHomePage)))
-                    .values
-                    .toList(),
-              )),
-        ),
+      body: SafeArea(
+        child: Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+            child: GridView.count(
+              crossAxisCount: 2,
+              children: notes
+                  .asMap()
+                  .map((key, value) => MapEntry(
+                      key,
+                      NoteCard(
+                          note: value,
+                          index: key,
+                          rebuildCallback: rebuildHomePage)))
+                  .values
+                  .toList(),
+            )),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

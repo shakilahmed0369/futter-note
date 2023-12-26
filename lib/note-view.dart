@@ -32,23 +32,21 @@ class _ViewNoteState extends State<ViewNote> {
         backgroundColor: primaryColor,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            TextField(
-              controller: _note,
-              maxLines: null,
-              style: const TextStyle(color: Colors.white, fontSize: 16.0),
-              decoration: const InputDecoration(
-                  hintText: 'Note Contents.',
-                  border: InputBorder.none,
-                  hintStyle:
-                      TextStyle(color: Color.fromARGB(255, 130, 130, 130))),
-            ),
-          ]),
-        ),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+        child:
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          TextField(
+            controller: _note,
+            maxLines: null,
+            style: const TextStyle(color: Colors.white, fontSize: 16.0),
+            decoration: const InputDecoration(
+                hintText: 'Note Contents.',
+                border: InputBorder.none,
+                hintStyle:
+                    TextStyle(color: Color.fromARGB(255, 130, 130, 130))),
+          ),
+        ]),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
